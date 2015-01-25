@@ -7,17 +7,15 @@
           <div class="media panel-body">
 
             <!-- profile photo -->
-            {{#with user}}
             <a class="pull-left" href="#">
-              <img class="media-object" src="{{profile.imageUrl}}" style="height: 73px;width: 73px;" alt="...">
+              <img class="media-object" src="https://pbs.twimg.com/profile_images/484387570214645761/BFPL5V4G_bigger.jpeg" alt="...">
             </a>
 
             <!-- profile information -->
             <div class="media-body">
-              <span class="username"><strong>{{profile.name}}</strong></span> <br>
-              <span class="handle">@{{username}}</span>
+              <span class="username"><strong>amanda saffer</strong></span> <br>
+              <span class="handle">@12pixels</span>
             </div>
-            {{/with}}
 
             <!-- profile stats -->
             <table id="profile-stats" class="table">
@@ -37,7 +35,7 @@
           <!-- compose a tweet -->
           <div class="panel-footer">
             <form>
-              {{> inputAutocomplete settings=settings class="form-control tweet-text" placeholder="Compose new Tweet..."}}
+              <input type="text" class="form-control tweet-text" placeholder="Compose new Tweet...">
               <div class="row">
                 <input type="submit" class="btn btn-default btn-xs pull-right tweet-btn" value="Tweet">
               </div>
@@ -67,7 +65,26 @@
           </li>
 
 
-          {{> tweets}}
+          {{#each tweets}}
+          <!-- unit (delete extras for loop) -->
+          <li class="list-group-item tweet">
+
+            <!-- display name, @username, and time ago -->
+            <h5 class="tweet-author">{{fullName}} <span class="author-info"><a href="#">@{{username}} &middot; {{tweetedTime}}</a></span></h5>
+
+            <!-- the post content -->
+            <p class="list-group-item-text">{{text}}</p>
+
+            <span class="expand"><a href="#">Expand</a></span>
+
+            <!-- post interactions -->
+            <div class="tweet-options pull-right">
+              <button type="button" class="btn btn-default btn-xs"><i class="fa fa-reply"></i> Reply</button>
+              <button type="button" class="btn btn-default btn-xs"><i class="fa fa-retweet"></i> Retweet</button>
+              <button type="button" class="btn btn-default btn-xs"><i class="fa fa-star"></i> Favorite</button>
+            </div>
+          </li>
+          {{/each}}
 
 
           <!-- load more tweets -->
@@ -103,8 +120,4 @@
       </div>
     </div>
   </div>
-</template>
-
-<template name="userPill">
-  <span class="label label-warning">{{username}}</span>
 </template>
