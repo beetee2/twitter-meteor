@@ -9,6 +9,9 @@ autopublish
 insecure
 iron:router
 mizzao:bootstrap-3
-accounts-ui
 stylus
 natestrauser:font-awesome
+mrt:accounts-ui-bootstrap-3
+joshowens:accounts-entry
+pfafman:coffee-alerts
+accounts-password
