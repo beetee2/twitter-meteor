@@ -1,0 +1,110 @@
+<template name="TweetStream">
+
+  <div id="stream" class="container">
+    <div class="row">
+      <div class="col-md-4 col-lg-3">
+        <div id="profile-panel" class="panel panel-default">
+          <div class="media panel-body">
+
+            <!-- profile photo -->
+            {{#with user}}
+            <a class="pull-left" href="#">
+              <img class="media-object" src="{{profile.imageUrl}}" style="height: 73px;width: 73px;" alt="...">
+            </a>
+
+            <!-- profile information -->
+            <div class="media-body">
+              <span class="username"><strong>{{profile.name}}</strong></span> <br>
+              <span class="handle">@{{username}}</span>
+            </div>
+            {{/with}}
+
+            <!-- profile stats -->
+            <table id="profile-stats" class="table">
+              <tr class="head">
+                <td><strong>Tweets</strong></td>
+                <td><strong>Following</strong></td>
+                <td><strong>Followers</strong></td>
+              </tr>
+              <tr class="numbers">
+                <td>500</td>
+                <td>240</td>
+                <td>1,600</td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- compose a tweet -->
+          <div class="panel-footer">
+            <form>
+              {{> inputAutocomplete settings=settings class="form-control tweet-text" placeholder="Compose new Tweet..."}}
+              <div class="row">
+                <input type="submit" class="btn btn-default btn-xs pull-right tweet-btn" value="Tweet">
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- trending topics -->
+        <div id="trending" class="panel panel-default">
+          <div class="panel-body">
+            <h4>Trending Topics</h4>
+          </div>
+          <ul class="list-group">
+            <a href="#" class="list-group-item">#food</a>
+            <a href="#" class="list-group-item">#meteorclub</a>
+            <a href="#" class="list-group-item">#loremipsumdolor</a>
+            <a href="#" class="list-group-item">#dracodormiens</a>
+            <a href="#" class="list-group-item">#atmospherejs</a>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-8 col-lg-6">
+        <ul id="tweet-stream" class="list-group">
+          <li class="list-group-item">
+            <h4 class="list-group-item-heading">Tweets</h4>
+          </li>
+
+
+          {{> tweets}}
+
+
+          <!-- load more tweets -->
+          <li class="list-group-item load-more">
+            <a href="#">Load more tweets</a>
+          </li>
+        </ul>
+      </div>
+
+
+
+      <!-- who to follow -->
+      <!-- responsive works if tweet stream is long enough, but otherwise it hangs.
+      can fix with javascript but i dunno if you wanna go through that much trouble. -->
+
+      <div id="who-to-follow" class="col-md-8 col-md-offset-4 col-lg-3 col-lg-offset-0">
+        <div class="panel panel-default">
+
+          <div class="panel-body">
+            <h4>Who to follow</h4>
+          </div>
+
+          <ul class="list-group">
+            <a href="#" class="list-group-item"><strong>Josh Owens</strong> @joshowens</a>
+            <a href="#" class="list-group-item"><strong>Sacha Greif</strong> @sachagreif</a>
+            <a href="#" class="list-group-item"><strong>Tom Coleman</strong> @tmeasday</a>
+          </ul>
+
+          <div class="panel-footer short">
+            <p>Find <a href="#">people you know</a>?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="userPill">
+  <span class="label label-warning">{{username}}</span>
+</template>
