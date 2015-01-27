@@ -5,7 +5,7 @@ Template.profile.events({
   'click .unfollow-me': function(event, template) {
     Meteor.call('unfollow', template.data.user._id)
   }
-})
+});
 
 Template.profile.helpers({
   following: function() {
